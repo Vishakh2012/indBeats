@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './components/Global';
+import Navbar from './components/Navbar/Navbar.js';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import Home from './Home';
+import Mybeats from './Mybeats';
+const theme = {
+  colors: {
+  header: 'rgba(232, 210, 166, 1)',
+  body: 'rgba(250, 132, 132, 1)',
+  footer: 'rgba(67, 207, 149, 1)'
+  },
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeProvider theme={theme}>
+    <BrowserRouter>
+    <div>
+    <GlobalStyles/>
+    <Navbar/>
+    <Routes>
+      <Route exact path='/dev'element={<Home/>}></Route>
+      <Route exact path='/MyBeats'element={<Mybeats/>} ></Route>
+
+    </Routes>
     </div>
+    </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
