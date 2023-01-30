@@ -1,5 +1,4 @@
-import { Pnav, Menu, MenuLink } from './Primary.styled.js'
-import {Link} from 'react-router-dom'
+import { Pnav, Menu, MenuLink } from './Navbar.styled.js'
 
 const Navbar = () => {
     return ( 

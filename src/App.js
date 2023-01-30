@@ -8,23 +8,26 @@ const theme = {
   colors: {
   header: 'rgba(232, 210, 166, 1)',
   body: 'rgba(250, 132, 132, 1)',
-  footer: 'rgba(67, 207, 149, 1)'
+  beats: 'rgba(67, 207, 149, 1)'
   },
 }
 
+
+
 function App() {
+
+  
   return (
     <ThemeProvider theme={theme}>
     <BrowserRouter>
-    <div>
+    <>
     <GlobalStyles/>
     <Navbar/>
     <Routes>
-      <Route exact path='/dev'element={<Home/>}></Route>
-      <Route exact path='/MyBeats'element={<Mybeats/>} ></Route>
-
+      <Route exact path='/dev' element={<Home/>}></Route>
+      <Route exact path='/MyBeats' element={<Mybeats/>} ></Route>
     </Routes>
-    </div>
+    </>
     </BrowserRouter>
     </ThemeProvider>
   );
