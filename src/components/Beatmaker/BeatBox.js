@@ -1,7 +1,9 @@
 import { BL,BeatGroup, Beat } from './Beat'
-
 const BeatBox = () => {
-    return ( 
+  
+    return (
+        <div style={{display : 'flex'}}>
+        
         <BeatGroup>
         <BL>
           <Beat/>
@@ -45,6 +47,7 @@ const BeatBox = () => {
         </BL>
         
         </BeatGroup>
+        </div> 
      );
 }
  
