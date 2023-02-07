@@ -28,13 +28,18 @@ export const InstSelBlock = styled.div`
     width: 70px;
 
 `
-export const Inst = styled(Bt)`
+export const Inst = styled.select`
     border-radius: 50%;
     display: flex;
     background-color: rgba(5, 168, 170, 1);
     margin: 10px;
     height: 40px;
     width: 40px;
+    text-decoration: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+   
 `
 
 export const BL = styled.div`
