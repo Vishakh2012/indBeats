@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import  BeatBox  from './components/Beatmaker/BeatBox'
 import { Inst, InstSelBlock } from './components/Beatmaker/Beat';
 import { useState } from 'react';
@@ -8,11 +7,11 @@ const perc_bl =
 [
   {
     label: "mridangam",
-    value: "/mridangam.mp3",
+    value: "/percussion/mridangam.mp3",
   },
   {
     label: "tabla",
-    value: "/tabla.mp3",
+    value: "/percussion/tabla.mp3",
   },
 ];
 
@@ -20,11 +19,11 @@ const snare_bl =
 [
     {
         label: "snare1",
-        value: "/snare1.mp3"
+        value: "/snare/snare1.mp3"
     },
     {
         label: "snare2",
-        value: "/snare2.mp3"
+        value: "/snare/snare2.mp3"
     }
 ]
 

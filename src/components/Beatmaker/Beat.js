@@ -8,7 +8,6 @@ var snare_sound = new Howl({
 
   });
   snare_sound.play();
-  console.log(Src)
 }
 
 
