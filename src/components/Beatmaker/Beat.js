@@ -1,13 +1,26 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Howl } from 'howler'
+const changes = (src) =>{
+var sound = new Howl({
+    src: ["/snare.mp3"]
+
+  });
+  sound.play();
+  
+}
+
+
 export const Beat = () => {
     const [BgColor, setBgColor] = useState('rgba(67, 207, 149, 1)');
-
+    
 
     return (
-        <Bt BgColor={BgColor} onClick={() => setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)')} />
+        <Bt BgColor={BgColor} onClick={() => {setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)');  changes();}} />
     )
 }
+
+
 const Bt = styled.div`
     height: 50px;
     width : 50px;
