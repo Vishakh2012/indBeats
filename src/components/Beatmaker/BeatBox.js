@@ -1,29 +1,31 @@
 import { BL,BeatGroup, Beat } from './Beat'
-const BeatBox = () => {
-  
+
+const BeatBox = ({ var1,var2,var3 }) => {
+
     return (
-        <div style={{display : 'flex'}}>
+        <div style={{display : 'flex', alignItems: "center" ,verticalAlign: "middle" }}>
         
         <BeatGroup>
-        <BL>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
+        <BL >
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          <Beat src = {var1} />
+          
         </BL>
         <BL>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
-          <Beat/>
+          <Beat  src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
+          <Beat src = {var2}/>
         </BL>
         <BL>
           <Beat/>

@@ -1,22 +1,23 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Howl } from 'howler'
-const changes = (src) =>{
-var sound = new Howl({
-    src: ["/snare.mp3"]
+const changes = (Src) =>{
+var snare_sound = new Howl({
+    src: [Src]
+    
 
   });
-  sound.play();
-  
+  snare_sound.play();
+  console.log(Src)
 }
 
 
-export const Beat = () => {
+export const Beat = ({src}) => {
     const [BgColor, setBgColor] = useState('rgba(67, 207, 149, 1)');
     
 
     return (
-        <Bt BgColor={BgColor} onClick={() => {setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)');  changes();}} />
+        <Bt BgColor={BgColor} onClick={() => {setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)');  changes(src);}} />
     )
 }
 
