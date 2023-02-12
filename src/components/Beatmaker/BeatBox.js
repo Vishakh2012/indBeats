@@ -1,52 +1,17 @@
-import { BL,BeatGroup, Beat } from './Beat'
+import { BeatGroup } from './Beat'
+import {BL} from './beatline'
 
 const BeatBox = ({ var1,var2,var3, var4 }) => {
-
+   
     return (
         <div style={{display : 'flex', alignItems: "center" ,verticalAlign: "middle" }}>
         
         <BeatGroup>
-        <BL >
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          <Beat src = {var1} />
-          
-        </BL>
-        <BL>
-          <Beat  src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-          <Beat src = {var2}/>
-        </BL>
-        <BL>
-        <Beat  src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-          <Beat src = {var3}/>
-        </BL>
-        <BL>
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        <Beat src = {var4} />
-        </BL>
+        <BL src = { var1 }/>
+        <BL src = { var2 }/>
+        <BL src = { var3 }/>
+        <BL src = { var4 }/>
+       
         
         </BeatGroup>
         </div> 

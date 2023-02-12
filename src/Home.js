@@ -1,6 +1,7 @@
 import  BeatBox  from './components/Beatmaker/BeatBox'
 import { Inst, InstSelBlock } from './components/Beatmaker/Beat';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 
 const perc_bl = 
@@ -78,11 +79,22 @@ const Home = () => {
     };
 
 
+    const Butto = styled.button`
+        background-color: rgba(67, 207, 149, 1);
+        margin:  100px auto 10 auto;
+        padding: 10px 20px;
+        display: flex;
+    `;
     
 
     
     return (
-        <div style={{display:'flex' , alignItems:'center', justifyContent: 'center', marginTop: 'calc(50vh - 4rem - 100px)'}}>  
+        <div style={{display:'flex', flexDirection:'column',justifyContent:'space-around', alignItems: 'center'}}>
+        <Butto>play</Butto>
+        <div style={{display:'flex' , alignItems:'center', justifyContent: 'center', marginTop: 'calc(50vh - 4rem - 100px)'}}> 
+        
+
+        
         <InstSelBlock>
         <Inst >
             {perc_bl.map((option) => 
@@ -113,7 +125,7 @@ const Home = () => {
         </InstSelBlock>
         <BeatBox var1 = { var1 } var2 = { var2 } var3 = { var3 } var4 = { var4 }/> 
         </div> 
-        
+        </div>
     );
 }
  

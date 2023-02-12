@@ -6,7 +6,7 @@ export const Pnav = styled.nav`
     height: 4rem;
     width: 100%;
     box-sizing: border-box;
-    margin: 0%;
+    margin: 0 0 10px 0;
     justify-content: flex-end;
     
     :hover {box-shadow: 10px 10px;}

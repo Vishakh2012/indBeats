@@ -1,22 +1,38 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Howl } from 'howler'
-const changes = (Src) =>{
+const changes = (Src, col_num,row_num) =>{
+    while (col_num <8)
 var snare_sound = new Howl({
-    src: [Src]
-    
+    src: [Src],
+    sprite: []//if the beat is active then add the sound as sprite using
 
   });
   snare_sound.play();
 }
 
 
-export const Beat = ({src}) => {
+
+export const Beat = ({src, col_num, row_num}) => {
     const [BgColor, setBgColor] = useState('rgba(67, 207, 149, 1)');
-    
+    const [isActive, setIsActive] = useState(false);
+    const col1 = [];
 
     return (
-        <Bt BgColor={BgColor} onClick={() => {setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)');  changes(src);}} />
+        <Bt BgColor={BgColor} onClick={() => {setBgColor(BgColor === 'rgba(67, 207, 149, 1)' ? 'rgba(0, 255, 240, 1)' : 'rgba(67, 207, 149, 1)'); 
+         setIsActive(isActive === false ? true: false );
+        //  AddSrc(({ row_num,col_num,src }) => { 
+        //     if (col_num ===1){
+        //         for(row_num ===1; row_num<5;row_num++){
+        //         if (isActive){
+        //             col1.push(src)
+                   
+                }
+            
+            }
+
+    
+         />
     )
 }
 
@@ -73,3 +89,11 @@ export const BeatGroup = styled.div`
     flex-direction: column;
     margin: auto;
 ` 
+
+const butto = () => {
+    return(
+        <button onClick = {() => changes()}></button>
+    )
+}
+
+export default butto;
