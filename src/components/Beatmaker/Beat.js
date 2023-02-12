@@ -72,5 +72,4 @@ export const BeatGroup = styled.div`
     justify-content: center;
     flex-direction: column;
     margin: auto;
-
 ` 

@@ -7,7 +7,7 @@ const perc_bl =
 [
   {
     label: "mridangam",
-    value: "/percussion/mridangam.mp3",
+    value: "/percussion/mridangam.wav"
   },
   {
     label: "tabla",
@@ -27,20 +27,54 @@ const snare_bl =
     }
 ]
 
+const clap_bl =
+[
+    {
+        label: "clap1",
+        value: "/clap/clap1.mp3"
+    },
+     {
+        label: "clap2",
+        value: "/clap/clap2.mp3"
+     }
+]
+
+const safari_bl =
+[
+    {
+        label: "safari",
+        value: "/safari/safari kick.mp3"
+    }
+
+]
 
 const Home = () => {
-    const [var1, setVar1] = useState("/tabla.mp3");
+    const [var1, setVar1] = useState("/percussion/tabla.mp3");
 
 
     const changeVar1 = (e) => {
         setVar1(e.target.value)
     };
 
-    const [var2, setVar2] = useState("/snare1.mp3");
+    const [var2, setVar2] = useState("/snare/snare1.mp3");
 
 
     const changeVar2 = (e) => {
         setVar2(e.target.value);
+    };
+
+    const [var3, setVar3] = useState("/clap/clap1.mp3");
+
+
+    const changeVar3 = (e) => {
+        setVar3(e.target.value);
+    };
+
+    const [var4, setVar4] = useState("/safari/safari kick.mp3");
+
+
+    const changeVar4 = (e) => {
+        setVar4(e.target.value);
     };
 
 
@@ -63,11 +97,21 @@ const Home = () => {
                 <option value = {option.value} onClick = {(e) => {changeVar2(e)}}>{ option.label}</option>
             ))}
         </Inst>
-        <Inst></Inst>
-        <Inst></Inst>
+        <Inst>
+        {clap_bl.map((option) => 
+            (
+                <option value = {option.value} onClick = {(e) => {changeVar3(e)}}>{ option.label}</option>
+            ))}
+        </Inst>
+        <Inst>
+        {safari_bl.map((option) => 
+            (
+                <option value = {option.value} onClick = {(e) => {changeVar4(e)}}>{ option.label}</option>
+            ))}
+        </Inst>
 
         </InstSelBlock>
-        <BeatBox var1 = { var1} var2 = { var2 }/> 
+        <BeatBox var1 = { var1 } var2 = { var2 } var3 = { var3 } var4 = { var4 }/> 
         </div> 
         
     );
