@@ -1,5 +1,5 @@
 import { BeatGroup } from './Beat'
-import {BL} from './beatline'
+import {BL} from './Beat'
 
 const BeatBox = ({ var1,var2,var3, var4 }) => {
    

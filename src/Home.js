@@ -7,10 +7,12 @@ import styled from 'styled-components';
 const perc_bl = 
 [
   {
+    id: 1,
     label: "mridangam",
     value: "/percussion/mridangam.wav"
   },
   {
+    id:2,
     label: "tabla",
     value: "/percussion/tabla.mp3",
   },
@@ -18,11 +20,12 @@ const perc_bl =
 
 const snare_bl =
 [
-    {
+    {   id: 1,
         label: "snare1",
         value: "/snare/snare1.mp3"
     },
     {
+        id:2,
         label: "snare2",
         value: "/snare/snare2.mp3"
     }
@@ -31,10 +34,12 @@ const snare_bl =
 const clap_bl =
 [
     {
+        id:1,
         label: "clap1",
         value: "/clap/clap1.mp3"
     },
      {
+        id:2,
         label: "clap2",
         value: "/clap/clap2.mp3"
      }
@@ -43,6 +48,7 @@ const clap_bl =
 const safari_bl =
 [
     {
+        id:1,
         label: "safari",
         value: "/safari/safari kick.mp3"
     }
@@ -96,29 +102,29 @@ const Home = () => {
 
         
         <InstSelBlock>
-        <Inst >
+        <Inst key = "perc_bl">
             {perc_bl.map((option) => 
             (
-                <option value = {option.value} onClick = {(e) => changeVar1(e)}>{ option.label}</option>
+                <option key={ option.id } value = {option.value} onClick = {(e) => changeVar1(e)}>{ option.label}</option>
             ))}
         </Inst>
         
-        <Inst>
+        <Inst key = "snare_bl">
             {snare_bl.map((option) => 
             (
-                <option value = {option.value} onClick = {(e) => {changeVar2(e)}}>{ option.label}</option>
+                <option key = { option.id } value = {option.value} onClick = {(e) => {changeVar2(e)}}>{ option.label}</option>
             ))}
         </Inst>
-        <Inst>
+        <Inst key = "clap_bl">
         {clap_bl.map((option) => 
             (
-                <option value = {option.value} onClick = {(e) => {changeVar3(e)}}>{ option.label}</option>
+                <option key = {option.id} value = {option.value} onClick = {(e) => {changeVar3(e)}}>{ option.label}</option>
             ))}
         </Inst>
-        <Inst>
+        <Inst key ="safari">
         {safari_bl.map((option) => 
             (
-                <option value = {option.value} onClick = {(e) => {changeVar4(e)}}>{ option.label}</option>
+                <option key={ option.id } value = {option.value} onClick = {(e) => {changeVar4(e)}}>{ option.label}</option>
             ))}
         </Inst>
 
