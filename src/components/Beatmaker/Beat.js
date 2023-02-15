@@ -1,25 +1,11 @@
 import styled from "styled-components";
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Howl } from 'howler'
 import { useEffect } from "react";
-const changes = (Src, col_num,row_num) =>{
-    while (col_num <8)
-var snare_sound = new Howl({
-    src: [Src],
-    sprite: []//if the beat is active then add the sound as sprite using
-
-  });
-  snare_sound.play();
-}
-
-
-
-
-
 
 
 export const InstSelBlock = styled.div`
-    background-color: ${({theme}) => theme.colors.header};
+    background-color: ${({ theme }) => theme.colors.header};
     display: flex;
     flex-direction: column;
     height: 220px;
@@ -27,7 +13,6 @@ export const InstSelBlock = styled.div`
     align-items: center;
     vertical-align: middle;
     width: 70px;
-
 `
 export const Inst = styled.select`
     border-radius: 50%;
@@ -38,10 +23,9 @@ export const Inst = styled.select`
     width: 40px;
     text-decoration: none;
   -moz-appearance: none;
-  -webkit-appearance: none;
-
-   
+  -webkit-appearance: none;  
 `
+
 
 
 export const BeatGroup = styled.div`
@@ -51,15 +35,15 @@ export const BeatGroup = styled.div`
     justify-content: center;
     flex-direction: column;
     margin: auto;
-` 
+`
 
-const butto = () => {
-    return(
-        <button onClick = {() => changes()}></button>
+export const Butto = () => {
+    return (
+        <button ></button>
     )
 }
 
-export default butto;
+
 
 const Bt = styled.div`
     height: 50px;
@@ -72,12 +56,8 @@ const Bt = styled.div`
 `
 const Beat = () => {
     const [BgColor, setBgcolor] = useState('rgba(67, 207, 149, 1)')
- 
-
-
-    
-    return(
-        <Bt BgColor = {BgColor} onClick={() => {setBgcolor(BgColor=== "rgba(67, 207, 149, 1)" ? "rgba(0, 255, 240, 1)" : "rgba(67, 207, 149, 1)")}}>
+    return (
+        <Bt BgColor={BgColor} onClick={() => { setBgcolor(BgColor === "rgba(67, 207, 149, 1)" ? "rgba(0, 255, 240, 1)" : "rgba(67, 207, 149, 1)") }}>
 
         </Bt>
     )
@@ -85,58 +65,35 @@ const Beat = () => {
 
 
 
-const Bl = ({src}) => {
+const Bl = ({ sound,src, isActive, setIsActive }) => {
     const [steps, setSteps] = useState(Array(8).fill(false))
     
-    useEffect(() => 
-    {
-        const sound = new Howl({
-            src: [src]
-    })
+usePlaySound(steps,src)
 
-    let index = 0; 
-    const intervalId = setInterval(() => {
-            if (steps[index]){
-           sound.play()
-        }
-        index = (index+1) % steps.length;
-    },200 )
+    const changeStep = (index) => {
+        setSteps(prevSteps => {
+            const newSteps = [...prevSteps];
+            newSteps[index] = !newSteps[index];
 
-    return () => {
-        clearInterval(intervalId);
-        sound.unload();
-      };
-    
-},[steps, src])
+            return newSteps
 
-const changeStep = (index) => {
-    setSteps(prevSteps => {
-        const newSteps = [...prevSteps];
-        newSteps[index] = !newSteps[index];
-        
-        return newSteps
+        })
+        console.log("changed");
+    }
+    return (
+        <div style={{ display: "flex", marginBottom: "10px" }}>
 
-    })
-    console.log("changed");
-}
+            {steps.map((val, index) => (
+                <div key={ index} style={{ width: "50px", height: "50px", marginLeft: "10px" }} onClick={() => {
+                    changeStep(index); setIsActive(false?true:false);
+                }}>
+                    <Beat />
+                </div>))}
 
-    
 
-    return ( 
-        <div style={{display:"flex" , marginBottom: "10px"}}>
-         
-      {steps.map((val ,index) => (
-        <div key= { index }   style= {{  width: "50px",height: "50px", marginLeft:"10px"  }} onClick={() => {changeStep( index ); 
-        }}>
-        <Beat/>
-        </div>))}
-      
-    
         </div>
-     );
+    );
 }
-
-
 
 export const BL = styled(Bl)`
     display:flex;
@@ -148,4 +105,24 @@ export const BL = styled(Bl)`
     margin: 10px 10px;
     `;
 
- 
+
+function usePlaySound(steps, src) {
+    const sound = new Howl({
+      src: [src],
+    });
+  
+    useEffect(() => {
+      let index = 0;
+      const intervalId = setInterval(() => {
+        if (steps[index]) {
+          sound.play();
+        }
+        index = (index + 1) % steps.length;
+      }, 200);
+  
+      return () => {
+        clearInterval(intervalId);
+        sound.unload();
+      };
+    }, [steps, sound]);
+  }
