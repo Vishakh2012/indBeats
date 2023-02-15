@@ -25,15 +25,25 @@ export const Inst = styled.select`
   -moz-appearance: none;
   -webkit-appearance: none;  
 `
+export const BG = () => {
+    const [Steps_h, setSteps_h] = useState(Array(8).fill(false));
+
+    return(
+        <>
+            {Steps_h.map((val, index) =>
+                (<BL key = { index }/>)
+             )}
+        </>
+    )
+}
 
 
-
-export const BeatGroup = styled.div`
+export const BeatGroup = styled(BG)`
     display: flex;
     height: 230px;
     width: 500px; 
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     margin: auto;
 `
 
@@ -66,26 +76,16 @@ const Beat = () => {
 
 
 const Bl = ({ sound,src, isActive, setIsActive }) => {
-    const [steps, setSteps] = useState(Array(8).fill(false))
+    const [steps_v, setSteps_v] = useState(Array(4).fill(false))
     
-usePlaySound(steps,src)
 
-    const changeStep = (index) => {
-        setSteps(prevSteps => {
-            const newSteps = [...prevSteps];
-            newSteps[index] = !newSteps[index];
 
-            return newSteps
-
-        })
-        console.log("changed");
-    }
     return (
-        <div style={{ display: "flex", marginBottom: "10px" }}>
+        <div >
 
-            {steps.map((val, index) => (
-                <div key={ index} style={{ width: "50px", height: "50px", marginLeft: "10px" }} onClick={() => {
-                    changeStep(index); setIsActive(false?true:false);
+            {steps_v.map((val, index) => (
+                <div key={ index} style={{ width: "50px", height: "50px", marginLeft: "10px" , marginBottom: "10px"}} onClick={() => {
+
                 }}>
                     <Beat />
                 </div>))}
@@ -99,7 +99,7 @@ export const BL = styled(Bl)`
     display:flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     height: 50px;
     margin: 10px 10px;
