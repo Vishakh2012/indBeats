@@ -25,27 +25,20 @@ export const Inst = styled.select`
   -moz-appearance: none;
   -webkit-appearance: none;  
 `
-export const BG = () => {
+
+export const BeatGroup = ({ var1, var2, var3, var4}) => {
     const [Steps_h, setSteps_h] = useState(Array(8).fill(false));
 
     return(
         <>
             {Steps_h.map((val, index) =>
-                (<BL key = { index }/>)
+                (<BL key = { index } var1 = { var1 } var2 = { var2 } var3 = { var3 } var4 = { var4 }/>)
              )}
         </>
     )
 }
 
 
-export const BeatGroup = styled(BG)`
-    display: flex;
-    height: 230px;
-    width: 500px; 
-    justify-content: center;
-    flex-direction: row;
-    margin: auto;
-`
 
 export const Butto = () => {
     return (
@@ -74,28 +67,7 @@ const Beat = () => {
 }
 
 
-
-const Bl = ({ sound,src, isActive, setIsActive }) => {
-    const [steps_v, setSteps_v] = useState(Array(4).fill(false))
-    
-
-
-    return (
-        <div >
-
-            {steps_v.map((val, index) => (
-                <div key={ index} style={{ width: "50px", height: "50px", marginLeft: "10px" , marginBottom: "10px"}} onClick={() => {
-
-                }}>
-                    <Beat />
-                </div>))}
-
-
-        </div>
-    );
-}
-
-export const BL = styled(Bl)`
+export const Bl = styled.div`
     display:flex;
     align-items: center;
     justify-content: center;
@@ -105,24 +77,62 @@ export const BL = styled(Bl)`
     margin: 10px 10px;
     `;
 
+const BL = ({ var1, var2, var3, var4}) => {
+    const [steps_v, setSteps_v] = useState(Array(4).fill(false))
+    const [IsActive, setIsActive] = useState(false)
+    const [Arr, setArr] = useState(Array(4).fill(false))
+    
+    const setMusic = (index) => 
+        {
+            const p1 = new Howl({
+                src : [var1],
+            });
+            const p2 = new Howl({
+                src : [var2],
+            });
+            const p3 = new Howl({
+                src : [var3],
+            });
+            const p4 = new Howl({
+                src : [var4],
+            });
+            const newArr = [...Arr];
+            newArr[index] = !newArr[index];
+            setArr(newArr);
+            console.log(Arr);
+            console.log(index);
+            
+            if(newArr[0] === true)
+            {
+                p1.play();
+            }
+            if(newArr[1] === true)
+            {
+                p2.play();
+            }if(newArr[2] === true)
+            {
+                p3.play();
+            }if(newArr[3] === true)
+            {
+                p4.play();
+            }
+        } 
+        useEffect(() => {
+          
+        }, [Arr])
+        
+        return(
+        <Bl>
 
-function usePlaySound(steps, src) {
-    const sound = new Howl({
-      src: [src],
-    });
-  
-    useEffect(() => {
-      let index = 0;
-      const intervalId = setInterval(() => {
-        if (steps[index]) {
-          sound.play();
-        }
-        index = (index + 1) % steps.length;
-      }, 200);
-  
-      return () => {
-        clearInterval(intervalId);
-        sound.unload();
-      };
-    }, [steps, sound]);
-  }
+            {steps_v.map((val, index) => (
+                <div key={ index} style={{ width: "50px", height: "50px", marginLeft: "10px" , marginBottom: "10px"}} onClick={() => {
+                    setMusic(index);
+                    setIsActive(IsActive? true: false);
+                }}>
+                    <Beat />
+                </div>))}
+
+
+        </Bl>
+    );
+}

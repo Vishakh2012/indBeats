@@ -10,9 +10,12 @@ const Mybeats = () => {
         
     })
     const playsound = () => {
-        s.play()
-        s2.play()
-        
+        const x = 1;
+        if (x>0){
+        s.play();}
+        if (x === 1){
+        s2.play();
+        }
         console.log("okay");
     }
     return ( 

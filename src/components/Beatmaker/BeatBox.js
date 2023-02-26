@@ -5,21 +5,13 @@ import { useState, useEffect } from 'react'
 
 const BeatBox = ({ var1,var2,var3, var4 }) => {
     const [isActive, setIsActive] = useState(false);
-    const [sound1, setSound1] = useState(new Howl({ src: [var1] }));
-    const [sound2, setSound2] = useState(new Howl({ src: [var2] }));
-    const [sound3, setSound3] = useState(new Howl({ src: [var3] }));
-    const [sound4, setSound4] = useState(new Howl({ src: [var4] }));
+
  
-   useEffect(() => {
-     setSound1(new Howl({ src: [var1] }));
-     setSound2(new Howl({ src: [var2] }));
-     setSound3(new Howl({ src: [var3] }));
-     setSound4(new Howl({ src: [var4] }));
-   }, [var1,var2,var3,var4]);
+
     return (
         <div style={{display : 'flex', alignItems: "center" ,verticalAlign: "middle", flexDirection: 'row' }}>
         
-        <BeatGroup/>
+        <BeatGroup var1 = { var1 } var2 = { var2 } var3 = { var3 } var4 = { var4 }/>
            
         </div> 
      );
